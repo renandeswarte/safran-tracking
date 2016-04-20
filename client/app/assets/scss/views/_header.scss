@@ -16,12 +16,7 @@
     border-color: $mainColor;
     .navbar-brand {
       position: relative;
-      i {
-        color: $secondaryColor;
-        font-size: 25px;
-        top: -3px;
-        position: relative;
-      }
+      color: white;
     }
     .navbar-toggle {
       border-color: #888;
@@ -86,7 +81,9 @@
           bottom: 0px;
           left: 0px;
           right: 0px;
-          background-color: $secondaryColor;
+          // background-color: $secondaryColor;
+          background-color: #FFF;
+
         }
       }
       @media (max-width:767px){
@@ -108,205 +105,30 @@
           }
         }
       }
+
       .navbar-nav>.open>a,
       .navbar-nav>.open>a:hover,
       .navbar-nav>.open>a:focus {
         background: none;
       }
       .navbar-left {
-        .notify{
-          display: inline-block;
-          position: absolute;
-          top: 2px;
-          right: 10px;
-          font-size: 5px;
-          text-align: center;
-          border-radius: 10px;
-          z-index: 999;
-          background-color: $secondaryColor;
-          color: #FFF;
-          font-weight: bold;
-          min-width: 19px;
-          border-radius: 10px;
-          .fa{
-            display: inline-block;
-            font: normal normal normal 14px/1 FontAwesome;
-            font-size: inherit;
-            padding: 7px 0;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-          }
-        }
-        .header-dropdown {
-          >.notify {
-            width: 15px;
-            min-width: 15px;
-            height: 15px;
-            i {
-              padding: 5px 0px;
-            }
-          }
-          .dropdown-menu {
-            margin-top: 1px;
-            border-top: 1px solid #FFF;
-            background-color: #333333;
-            padding:0px;
-            li {
-              padding:10px 0px;
-              a {
-                color: #FFF;
-              }
-              &.divider {
-                padding:0px;
-                margin: 0px;
-              }
-              &.my-projects, &.my-connections-tab {
-                position: relative;
-              }
-              &.requests {
-                .badge {
-                  position: relative;
-                  right: -11px;
-                  background-color: $secondaryColor;
-                }
-              }
-              .notify {
-                top: 13px;
-              }
-            }
-          }
-
-          .dropdown-menu>li>a:hover,
-          .dropdown-menu>li>a:focus {
-            background: none;
-          }
-          .dropdown-menu>.active>a {
-            background:none;
-          }
-        }
       }
       .navbar-right {
         li {
-          .badge {
-            display: none;
+          display: inline-block;
+          a {
+            padding-left: 5px;
+            padding-right: 5px;
           }
-          &.notifications {
-            .badge {
-              display: inline-block;
-              position: absolute;
-              top: 5px;
-              left: 28px;
-              z-index: 999;
-              background-color: $secondaryColor;
-              color: #FFF;
-              font-weight: bold;
-            }
+          .no-pointer {
+            cursor: default;
           }
+        }
+      }
+    }
+  }
+}
 
-          &.user-dropdown {
-            height: 50px;
-            a { 
-              display: inline-block;
-              &.dropdown-toggle {
-                position: relative;
-                top: -10px;
-              }
-              &.user-pic {
-                background-image:url('../../assets/pictures/users/default-user.jpg');
-                background-size: cover;
-                background-position: 50% 50%;
-                width: 40px;
-                height: 40px;
-                margin-left: 10px;
-                top: 5px;
-                border-radius: 50%;
-                border: 1px solid #FFF;
-                display: inline-block;
-              }
-            }
-            .dropdown-menu {
-              border-color: #FFF;
-              background-color: #333333;
-              min-width: 144px;
-              li {
-                a {
-                  color: #FFF;
-                }
-                &:first-child {
-                  padding-top: 5px;
-                }
-                a:hover {
-                  background: none;
-                }
-              }
-              @media (max-width:767px){
-                background:none;
-              }
-            }
-            &.open {
-              >a:focus {
-                background: none;
-              }
-            }
-          }
-          &.notify {
-            a {
-              padding-top: 10px;
-              padding-bottom: 10px;
-              font-size: 28px;
-            }
-            &.messaging {}
-            &.requests {}
-          }
-        }
-      }
-    }
-  }
-}
-#project-create {
-  .dropdown-menu {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    li {
-      a {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        background-color: #FFF;
-      }
-    }
-  }
-  .dropdown-menu>.active>a,
-  .dropdown-menu>.active>a:hover,
-  .dropdown-menu>.active>a:focus {
-    background-color: $secondaryColor;
-  }
-  .modal-body {
-    .collaborators-list {
-      padding-top: 15px;
-      padding-bottom: 5px;
-      .collaborator {
-        display: inline-block;
-        cursor: pointer;
-        padding: 5px 10px;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        background-color: $blueColor;
-        color: #FFF;
-        border-radius: 3px;
-        transition: background-color 0.2s ease;
-        &.fadein-effect {
-          @include animationEffect(0.4s, fadeEffect);
-        }
-        i {
-          margin-left: 5px;
-        }
-        &:hover {
-          background-color: $redColor;
-        }
-      }
-    }
-  }
-}
 @media (max-width: 767px) {
   .header {
     .header-menu {

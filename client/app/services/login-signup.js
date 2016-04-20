@@ -6,7 +6,7 @@ angular.module('myApp.loginSignup', ['firebase'])
 }
 ])
 
-.factory('LoginSignup', [ '$timeout', '$location', '$window', '$http', '$q', '$rootScope', '$cookies', 'ServerAPI', 'FirebaseAuth', '$firebaseObject', 'FirebaseUrl', function($timeout, $location, $window, $http, $q, $rootScope, $cookies, ServerAPI, FirebaseAuth, $firebaseObject, FirebaseUrl) {
+.factory('AuthServices', [ '$timeout', '$location', '$window', '$http', '$q', '$rootScope', '$cookies', 'ServerAPI', 'FirebaseAuth', '$firebaseObject', 'FirebaseUrl', function($timeout, $location, $window, $http, $q, $rootScope, $cookies, ServerAPI, FirebaseAuth, $firebaseObject, FirebaseUrl) {
 
   resolve = function(errval, retval, deferred) {
     $rootScope.$apply(function() {
@@ -88,7 +88,6 @@ angular.module('myApp.loginSignup', ['firebase'])
       email: userDataToSave.email,
       password: userDataToSave.password
     }).then(function(userData) {
-      console.log(FirebaseUrl + '/users/' + userData.uid);
       var ref = new Firebase(FirebaseUrl + '/users/' + userData.uid);
       var userToSave = $firebaseObject(ref);
 

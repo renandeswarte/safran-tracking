@@ -16,12 +16,12 @@
       <div class="collapse navbar-collapse links-menu" id="bs-example-navbar-collapse-1" ng-controller='AuthController'>
         <ul class="nav navbar-nav navbar-left" bs-active-link ng-hide="location.path().startsWith('/subscription')">
           <li ng-show='!user'><a href="#/login" title="Login" data-toggle="collapse" data-target=".navbar-collapse.in">Login</a></li>
-          <li ng-show='user' class="active"><a href="#/" title="Home page" data-toggle="collapse" data-target=".navbar-collapse.in">Homepage</a></li>
+          <li ng-show='user' class="active"><a href="#/" title="Home page" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li ng-show='user'>{{ user.userName }}</li>
-          <li ng-show='user' role="separator" class="divider"></li>
+          <li ng-show='user'><a href="" class="no-pointer">{{ user.userName }}</a></li>
+          <li ng-show='user' role="separator" class="divider"><a href="" class="no-pointer">|</a></li>
           <li ng-show='user'><a href="" data-toggle="collapse" data-target=".navbar-collapse.in" ng-click='logout()'>Logout</a></li>
         </ul>
       </div>

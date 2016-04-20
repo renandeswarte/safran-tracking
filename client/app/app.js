@@ -5,6 +5,8 @@ angular.module('myApp', [
   'myApp.env',
   // Services
   'myApp.loginSignup',
+  'myApp.auth',
+  'myApp.services',
   // Views
   'myApp.header',
   'myApp.headerDirective',
@@ -12,8 +14,7 @@ angular.module('myApp', [
   'myApp.footerDirective',
   'myApp.login',
   'myApp.homepage',
-  'myApp.auth',
-  'myApp.services'
+  'myApp.form'
 ])
 
 .config(['$routeProvider', function($routeProvider) {

@@ -1,9 +1,9 @@
 angular.module('myApp.header', [])
 
-.controller('headerController', ['$scope', 'LoginSignup', function($scope, LoginSignup) {
+.controller('headerController', ['$scope', 'AuthServices', function($scope, AuthServices) {
   
 $scope.logout = function() {
-  LoginSignup.logout();
+  AuthServices.logout();
 }
 
 }]);

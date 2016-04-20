@@ -1,0 +1,17 @@
+.form-page {
+  .forms-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    .form-container {
+      form {
+        &.ng-submitted {
+
+          .ng-invalid {
+            border-color: red;
+            border-width: 2px;
+          }
+        }
+      }
+    }
+  }
+}
