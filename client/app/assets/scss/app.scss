@@ -1,0 +1,64 @@
+@import "externals/reset";
+@import "externals/bootstrap";
+@import "externals/animate";
+@import "externals/font-awesome";
+
+@import "tools/variables";
+@import "tools/mixins";
+@import "tools/keyframes-animations";
+
+@import "views/header";
+@import "views/footer";
+@import "views/welcome-page";
+@import "views/homepage";
+
+
+html {
+  background-color: $bgColor;
+  -webkit-font-smoothing: antialiased;
+  * {
+    font-family:"Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  button, .btn:focus, .btn, .btn.active, a {
+    outline: 0 !important;
+  }
+}
+body {
+  background: none;
+}
+
+// Override Global Buttons style
+.btn.active,
+.connect-btn,
+.btn-primary {
+  background-color: $secondaryColor !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+// Style for all pages
+.page {
+  padding-top: 52px;
+}
+
+// Fade effect when page load
+.fadein-effect {
+ @include animationEffect(1s, fadeEffect);
+}
+
+// Text truncate
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Clearfix
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {clear: both;}
+.cf {*zoom: 1;}
