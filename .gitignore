@@ -4,6 +4,9 @@ node_modules/
 bower_components/
 client/app/dist/
 .env
+client/app/configFile.js
+configFile.json
+
 npm-debug.log
 
 

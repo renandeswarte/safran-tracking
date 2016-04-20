@@ -9,6 +9,7 @@ var runSequence = require('run-sequence');
 var exec = require('child_process').exec;
 var notify = require("gulp-notify");
 var plumber = require('gulp-plumber');
+var gulpNgConfig = require('gulp-ng-config');
 
 var TRAVIS = !!process.env.TRAVIS;
 
@@ -18,6 +19,12 @@ var TEST_FILES = ['test/*.js', '!test/databaseSpec.js'];
 
 gulp.task('default', function(cb) {
   runSequence('build', 'test', cb);
+});
+
+gulp.task('config-files', function () {
+  gulp.src('configFile.json')
+  .pipe(gulpNgConfig('myApp.env'))
+  .pipe(gulp.dest('./client/app'))
 });
 
 gulp.task('build', function(cb) {

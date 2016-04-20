@@ -8,12 +8,11 @@ angular.module('myApp.auth', [])
 
   if (cookie) {
   	// Create user object for cookie information
-    var cookieObj = Cookie.parseCookie(cookie);
+    var cookieObj = JSON.parse(cookie);
     var user = {
-      'userName' : cookieObj.username
+      'userName' : cookieObj.fullName
     }
     $scope.user = user;
-    $scope.githubCookie = true;
   }
 
 }]);
