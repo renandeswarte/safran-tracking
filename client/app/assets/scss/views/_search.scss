@@ -1,0 +1,12 @@
+.search-page {
+  .no-equipment {
+    margin-top: 10px;
+  }
+form {
+  &.ng-submitted {
+    .ng-invalid {
+      border: 2px solid red;
+    }
+  }
+}
+}

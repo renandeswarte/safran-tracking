@@ -19,7 +19,7 @@
           <h3 class="serial">Serial: <b>{{element.serial}}</b></h3>
           <h4 class="username">By {{element.userName}}</h4>
           <h4 class="date">{{element.date | date : 'd MMM y, HH:mm'}}</h4>
-          <p class="title">location</p>
+          <p class="title">Location</p>
           <p class="content location">{{element.location}}</p>
           <p class="title">Activity</p>
           <p class="content activity">{{element.activity}}</p>
@@ -47,8 +47,8 @@
           <h4 class="modal-title">New Tracking</h4>
         </div>
         <div class="modal-body">
-          <div class="forms-container container">
-            <div class="form-container col-xs-12 col-sm-offset-3 col-sm-6">
+          <div class="forms-container row">
+            <div class="form-container col-xs-12 col-sm-offset-2 col-sm-8">
               <form name="dataForm" ng-submit="formSubmit(dataForm)" novalidate>
                 <p class="username">{{userName}}</p>
                 <p>Equipment: {{equipment}}</p>

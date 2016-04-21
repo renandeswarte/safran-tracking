@@ -16,7 +16,8 @@ angular.module('myApp', [
   'myApp.footerDirective',
   'myApp.login',
   'myApp.homepage',
-  'myApp.tracking'
+  'myApp.tracking',
+  'myApp.search'
 ])
 
 .config(['$routeProvider', function($routeProvider) {

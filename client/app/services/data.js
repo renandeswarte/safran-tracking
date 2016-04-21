@@ -90,11 +90,27 @@ angular.module('myApp.data', ['firebase'])
     return promise;
   };
 
+  var searchFunction = function(key) {
+    var deferred = $q.defer();
+
+    var firebase = new Firebase(FirebaseUrl + "/equipmentList/" + key);
+
+    firebase.once("value", function(snapshot) {
+      resolve(null, snapshot.val(), deferred);
+    }, function(errorObject) {
+      resolve(errorObject, null, deferred);
+    });
+
+    promise = deferred.promise;
+    return promise;
+  }
+
   return {
     saveData: saveData,
     getLastestData: getLastestData,
     getLastestDataBySerial: getLastestDataBySerial,
-    getAllDataBySerial: getAllDataBySerial
+    getAllDataBySerial: getAllDataBySerial,
+    searchFunction: searchFunction
   };
 
 }]);

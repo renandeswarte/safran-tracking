@@ -1,0 +1,23 @@
+<div class="search-page page container">
+<h2>Search by Equipment</h2>
+
+<form class="equipment-form form-inline" name="equipmentForm" novalidate ng-submit="searchEquipement(equipmentForm)">
+  <div class="form-group">
+    <input type="text" class="form-control" id="equipement" placeholder="Equipment" ng-model="equipment" required>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<section class="serial-list fadeIn-effect" ng-show="hasEquipment">
+<h2>List of serials for equipment {{equipment}}</h2>
+<h6>Click on a serial to go to the tracking page</h6>
+<label>Search: <input ng-model="searchText"></label>
+  <ul>
+    <li class="serial" ng-repeat="serial in serials | orderBy: '-serial' | filter:searchText">
+      <a href="#/tracking?equipment={{equipment}}&serial={{serial}}">{{serial}}</a>
+    </li>
+  </ul>
+</section>
+
+<p class="no-equipment" ng-show="noEquipment">No such equipment</p>
+</div>
