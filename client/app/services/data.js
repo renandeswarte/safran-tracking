@@ -13,32 +13,76 @@ angular.module('myApp.data', ['firebase'])
     });
   }
 
+  var getLastestData = function() {
+    var deferred = $q.defer();
+    var ref = new Firebase(FirebaseUrl + '/equipmentData');
+    ref.orderByChild("date").limitToLast(6).once("value", function(snapshot) {
+      resolve(null, snapshot.val(), deferred);
+    }, function(errorObject) {
+      resolve(errorObject, null, deferred);
+    });
+    promise = deferred.promise;
+    return promise;
+  };
+
+  var getLastestDataBySerial = function(equipment, serial) {
+    var deferred = $q.defer();
+    var ref = new Firebase(FirebaseUrl + '/equipmentData');
+    ref.orderByChild(equipment).equalTo(serial).limitToLast(10).once("value", function(snapshot) {
+      resolve(null, snapshot.val(), deferred);
+    }, function(errorObject) {
+      resolve(errorObject, null, deferred);
+    });
+    promise = deferred.promise;
+    return promise;
+  };
+
+  var getAllDataBySerial = function(equipment, serial) {
+    var deferred = $q.defer();
+    var ref = new Firebase(FirebaseUrl + '/equipmentData');
+    ref.orderByChild(equipment).equalTo(serial).once("value", function(snapshot) {
+      resolve(null, snapshot.val(), deferred);
+    }, function(errorObject) {
+      resolve(errorObject, null, deferred);
+    });
+    promise = deferred.promise;
+    return promise;
+  };
+
   var saveData = function(dataToSave) {
     var deferred = $q.defer();
 
-    var ref = new Firebase(FirebaseUrl + '/equipment/' + dataToSave.equipment + '/serial/' + dataToSave.serial);
-    console.log(FirebaseUrl + '/equipment/' + dataToSave.equipment + '/' + dataToSave.version);
+    var dataRef = new Firebase(FirebaseUrl + '/equipmentData/');
+    var equipmentRef = new Firebase(FirebaseUrl + '/equipmentList/');
 
     var d = new Date();
     var postTime = d.getTime();
 
     var dataCleaned = {
+      equipment: dataToSave.equipment,
+      serial: dataToSave.serial,
       userName: dataToSave.userName,
       location: dataToSave.location,
       activity: dataToSave.activity,
       details: dataToSave.details,
       date: postTime
     }
+    dataCleaned[dataToSave.equipment] = dataToSave.serial;
 
-    console.log(dataCleaned);
-
-    ref.push(dataCleaned, function(error) {
+    dataRef.push(dataCleaned, function(error) {
       if (error) {
-        alert("Data could not be saved." + error);
         resolve(error, null, deferred);
       } else {
-        alert("Data saved successfully.");
-        resolve(null, 'ok', deferred);
+        var serial = {};
+        serial[dataToSave.serial] = dataToSave.serial;
+
+        equipmentRef.child(dataToSave.equipment).update(serial, function(error) {
+          if (error) {
+            resolve(error, null, deferred);
+          } else {
+            resolve(null, 'ok', deferred);
+          }
+        })
       }
     });
 
@@ -46,48 +90,11 @@ angular.module('myApp.data', ['firebase'])
     return promise;
   };
 
-    // FirebaseAuth.$authWithPassword({
-    //   email: userDataLogin.email,
-    //   password: userDataLogin.password
-    // }).then(function(authData) {
-    //   console.log("Logged in as:", authData);
-    //   $timeout(function() {resolve(null, 'ok', deferred);}, 0);
-
-    //   var ref = new Firebase(FirebaseUrl + '/users/' + authData.uid);
-
-    //   // Get User Data
-    //   ref.once('value', function (dataSnapshot) {  
-    //   var userDataToSave = dataSnapshot.val();
-
-    //   // Set cookie
-    //   var now = new Date();
-    //   var expirationDate = new Date(now.getFullYear()+1, now.getMonth(), now.getDate());
-    //   var dataToStore = {
-    //     fullName: userDataToSave.fullName,
-    //     email: userDataToSave.email
-    //   };
-    //   $cookies.put('safranCookie', JSON.stringify(dataToStore), {expires: expirationDate});
-
-    //   // Redirect to main page after login
-    //   $window.location.href = "/";
-
-    //   }, function (err) {
-    //     // code to handle read error
-    //     $timeout(function() {resolve(error, null, deferred);}, 0);
-
-    //   });
-
-    // }).catch(function(error) {
-    //   console.error("Authentication failed:", error);
-    //   $timeout(function() {resolve(error, null, deferred);}, 0);
-    // });
-
-    // promise = deferred.promise;
-    // return promise;
-  // };
-
   return {
-    saveData: saveData
+    saveData: saveData,
+    getLastestData: getLastestData,
+    getLastestDataBySerial: getLastestDataBySerial,
+    getAllDataBySerial: getAllDataBySerial
   };
 
 }]);

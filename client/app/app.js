@@ -8,6 +8,7 @@ angular.module('myApp', [
   'myApp.auth',
   'myApp.services',
   'myApp.data',
+  'myApp.filters',
   // Views
   'myApp.header',
   'myApp.headerDirective',
@@ -15,7 +16,7 @@ angular.module('myApp', [
   'myApp.footerDirective',
   'myApp.login',
   'myApp.homepage',
-  'myApp.form'
+  'myApp.tracking'
 ])
 
 .config(['$routeProvider', function($routeProvider) {

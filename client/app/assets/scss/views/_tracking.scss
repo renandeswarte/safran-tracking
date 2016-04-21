@@ -1,0 +1,79 @@
+.tracking-page {
+  .button-modal-container {
+    margin-top: 10px;
+    text-align: center;
+    button {
+      font-size: 14px;
+      padding: 10px 16px 8px;
+    }
+  }
+  // .data-container {
+  //   ul {
+  //     .data-element {
+  //       padding: 10px;
+  //       .inner-container {
+  //         border-radius: 5px;
+  //         border: 1px solid #CCC;
+  //         padding: 10px;
+  //         h3 {
+  //           font-size: 18px;
+  //           margin: 5px 0px;
+  //           word-break: break-all;
+  //         }
+  //         h4 {
+  //           font-size: 12px;
+  //           margin: 5px 0px;
+  //           word-break: break-all;
+  //         }
+  //         .title {
+  //           font-size: 14px;
+  //           border-bottom: 1px solid #CCC;
+  //           font-weight: bold;
+  //         }
+  //         .username {
+  //           margin-top: 10px;
+  //         }
+  //         .date {
+  //           margin-bottom: 15px;
+  //         }
+  //         .details {
+  //           height: 80px;
+  //           overflow: scroll;
+  //           word-break: break-word;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  .forms-container {
+    .form-container {
+      form {
+        &.ng-submitted {
+          .ng-invalid {
+            border-color: red;
+            border-width: 2px;
+          }
+        }
+        p {
+          color: #888;
+          margin: 5px 0px;
+          font-size: 12px;
+          word-break: break-word;
+          &.username {
+            margin-top: 0px;
+          }
+          &.serial {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #CCC;
+          }
+        }
+        button {
+          margin: 0 auto;
+          width: 50%;
+          display: block;
+        }
+      }
+    }
+  }
+}

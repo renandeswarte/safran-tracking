@@ -35,7 +35,6 @@ angular.module('myApp.login', ['ngRoute'])
           password: $scope.password
         };
         AuthServices.signup(userInfos).then(function(data) {
-          //console.log(data);
           $scope.signupError = false;
         }, function(error) {
           $scope.signupError = error.message;

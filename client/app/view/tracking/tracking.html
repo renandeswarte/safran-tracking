@@ -1,0 +1,87 @@
+<div class="tracking-page page">
+
+  <div class="loader-container">
+    <span class="loader"><i class="fa fa-spinner" aria-hidden="true"></i></span>
+  </div>
+
+  <!-- Button trigger modal -->
+  <div class="button-modal-container fadein-effect" ng-show="contentLoading">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#form-modal">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
+    </button>
+  </div>
+
+  <section class="data-container container">
+    <ul class="row">
+      <li class="data-element col-xs-12 col-sm-6 fadein-effect" ng-repeat="element in data | toArray | orderBy:'-date' ">
+        <div class="inner-container">
+          <h3 class="equipment">Equipment: <b>{{element.equipment}}</b></h3>
+          <h3 class="serial">Serial: <b>{{element.serial}}</b></h3>
+          <h4 class="username">By {{element.userName}}</h4>
+          <h4 class="date">{{element.date | date : 'd MMM y, HH:mm'}}</h4>
+          <p class="title">location</p>
+          <p class="content location">{{element.location}}</p>
+          <p class="title">Activity</p>
+          <p class="content activity">{{element.activity}}</p>
+          <p class="title">Details</p>
+          <p class="content details">{{element.details}}</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <p class="no-data" ng-show="noData">No data yet</p>
+
+  <!-- Button trigger modal -->
+  <div class="button-get-all-data-container fadein-effect" ng-show="contentLoading && !allDataShowed && !noData">
+    <button type="button" class="btn btn-primary btn-lg" ng-click="seeAllData()">
+      See all data
+    </button>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="form-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">New Tracking</h4>
+        </div>
+        <div class="modal-body">
+          <div class="forms-container container">
+            <div class="form-container col-xs-12 col-sm-offset-3 col-sm-6">
+              <form name="dataForm" ng-submit="formSubmit(dataForm)" novalidate>
+                <p class="username">{{userName}}</p>
+                <p>Equipment: {{equipment}}</p>
+                <p class="serial">Serial: {{serial}}</p>
+                <div class="form-group">
+                  <label for="location">Test Location</label>
+                  <input type="text" class="form-control" id="location" placeholder="Test Location" ng-model="testLocation" required>
+                </div>
+                <div class="form-group">
+                  <label for="activity">Activity</label>
+                  <select ng-model="activity" class="form-control" required>
+                    <option value="">Select</option>
+                    <option selected value="Essai">Essai</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Installation">Installation</option>
+                    <option value="Inpection">Inpection</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="details">Details</label>
+                  <textarea class="form-control" rows="3" placeholder="Details" ng-model="details" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+                <p class="form-data error" ng-show="formDataError">{{formDataError}}</p>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

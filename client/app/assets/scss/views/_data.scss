@@ -1,0 +1,38 @@
+  .data-container {
+    ul {
+      .data-element {
+        padding: 10px;
+        .inner-container {
+          border-radius: 5px;
+          border: 1px solid #CCC;
+          padding: 10px;
+          h3 {
+            font-size: 18px;
+            margin: 5px 0px;
+            word-break: break-all;
+          }
+          h4 {
+            font-size: 12px;
+            margin: 5px 0px;
+            word-break: break-all;
+          }
+          .title {
+            font-size: 14px;
+            border-bottom: 1px solid #CCC;
+            font-weight: bold;
+          }
+          .username {
+            margin-top: 10px;
+          }
+          .date {
+            margin-bottom: 15px;
+          }
+          .details {
+            height: 80px;
+            overflow: scroll;
+            word-break: break-word;
+          }
+        }
+      }
+    }
+  }
