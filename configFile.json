@@ -1,0 +1,6 @@
+{
+  "FirebaseUrl": "https://safran-tracker.firebaseio.com",
+  "DevelopmentAPI": "http://127.0.0.1:3000",
+  "ProductionAPI": "https://safran-tracker.herokuapp.com",
+  "ServerAPI": "https://safran-tracker.herokuapp.com"
+}
