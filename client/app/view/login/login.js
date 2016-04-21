@@ -10,6 +10,9 @@ angular.module('myApp.login', ['ngRoute'])
 
 .controller('loginCtrl', ['$scope', 'AuthServices', function($scope, AuthServices) {
 
+  // Set default min height regarding screen height
+  $('.page').css('min-height', window.innerHeight - 40 + 'px');
+
   $scope.login = function() {
     AuthServices.login({
       email: $scope.email,

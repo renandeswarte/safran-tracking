@@ -15,9 +15,11 @@
     <ul class="row">
       <li class="data-element col-xs-12 col-sm-6 fadein-effect" ng-repeat="element in data | toArray | orderBy:'-date' ">
         <div class="inner-container">
-          <h3 class="equipment">Equipment: <b>{{element.equipment}}</b></h3>
-          <h3 class="serial">Serial: <b>{{element.serial}}</b></h3>
-          <h4 class="username">By {{element.userName}}</h4>
+          <div class="product-infos">
+            <h3 class="equipment">Equipment: <b>{{element.equipment}}</b></h3>
+            <h3 class="serial">Serial: <b>{{element.serial}}</b></h3>
+          </div>
+          <h4 class="username">By <b>{{element.userName}}</b></h4>
           <h4 class="date">{{element.date | date : 'd MMM y, HH:mm'}}</h4>
           <p class="title">Location</p>
           <p class="content location">{{element.location}}</p>
@@ -76,9 +78,6 @@
               </form>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

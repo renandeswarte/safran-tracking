@@ -4,12 +4,21 @@
         padding: 10px;
         .inner-container {
           border-radius: 5px;
-          border: 1px solid #CCC;
+          border: 1px solid $lightGreyColor;
           padding: 10px;
-          h3 {
-            font-size: 18px;
-            margin: 5px 0px;
-            word-break: break-all;
+          .product-infos {
+            background-color: $secondaryColor;
+            color: $whiteColor;
+            padding: 10px 10px;
+            border-radius: 5px;
+            h3 {
+              font-size: 14px;
+              margin: 0px 0px;
+              word-break: break-all;
+              &.serial {
+                margin-top: 7px;
+              }
+            }
           }
           h4 {
             font-size: 12px;
@@ -18,7 +27,7 @@
           }
           .title {
             font-size: 14px;
-            border-bottom: 1px solid #CCC;
+            border-bottom: 1px solid $lightGreyColor;
             font-weight: bold;
           }
           .username {
@@ -31,6 +40,10 @@
             height: 80px;
             overflow: scroll;
             word-break: break-word;
+            white-space: pre-wrap;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #F4F4F4;
           }
         }
       }

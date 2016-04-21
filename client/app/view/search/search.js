@@ -21,6 +21,7 @@ angular.module('myApp.search', [])
           $scope.noEquipment = true;
         } else {
           $scope.hasEquipment = true;
+          $scope.noEquipment = false;
           var dataArray = ObjToArray(data);
           console.log(dataArray);
           $scope.serials = dataArray;

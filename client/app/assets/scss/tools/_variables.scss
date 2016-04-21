@@ -1,10 +1,11 @@
-$bgColor: #FFFFFF;
+$whiteColor: #FFFFFF;
 $chatColor1: #E5F9FF;
 $chatColor2: #47C2E8;
 
 $redColor: #E32636;
 $greenColor: #25b695;
-$blueColor: #5d85c3;
+// $blueColor: #5d85c3;
+$blueColor: #2980b9;
 $salmonColor: #ed6f70;
 
 $lightGreyColor: #CCC;
@@ -13,5 +14,6 @@ $darkGreyColor: #323a45;
 
 // Theme Color
 $mainColor: $darkGreyColor;
-$secondaryColor: $greenColor;
+$secondaryColor: $blueColor;
+$bgColor: $whiteColor;
 

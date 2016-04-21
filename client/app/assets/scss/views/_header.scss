@@ -16,7 +16,7 @@
     border-color: $mainColor;
     .navbar-brand {
       position: relative;
-      color: white;
+      color: $whiteColor;
     }
     .navbar-toggle {
       border-color: #888;
@@ -65,7 +65,7 @@
     }
     .links-menu {
       .navbar-nav>li>a {
-        color: #FFF;
+        color: $whiteColor;
       }
       .navbar-nav>.active>a, 
       .navbar-nav>.active>a:hover,
@@ -81,8 +81,8 @@
           bottom: 0px;
           left: 0px;
           right: 0px;
-          // background-color: $secondaryColor;
-          background-color: #FFF;
+          background-color: $secondaryColor;
+          // background-color: $whiteColor;
 
         }
       }
@@ -135,11 +135,8 @@
       .links-menu {
         .navbar-right {
           li {
-            &.messaging, &.requests {
-              display: inline-block;
-            } 
-            &.user-dropdown {
-              height: auto;
+            &.username {
+              margin-left: 10px;
             }
           }
         }
@@ -158,16 +155,16 @@
             }
             .dropdown-menu {
               margin-top: 1px;
-              border-top: 1px solid #FFF;
+              border-top: 1px solid $whiteColor;
               background: none;
               padding:0px;
               li {
                 padding:10px 0px;
                 &:last-child {
-                  border-bottom: 1px solid #FFF;
+                  border-bottom: 1px solid $whiteColor;
                 }
                 a {
-                  color: #FFF;
+                  color: $whiteColor;
                 }
                 &.active {
                   position: relative;

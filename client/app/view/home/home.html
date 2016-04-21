@@ -1,6 +1,6 @@
 <div class="container page home-page fadein-effect">
 
-  <h3>Lastest tracked equipment</h3>
+  <h4 class='title'>Lastest tracked equipments</h4>
   <div class="loader-container">
     <span class="loader"><i class="fa fa-spinner" aria-hidden="true"></i></span>
   </div>
@@ -9,9 +9,11 @@
     <ul class="row">
       <li class="data-element col-xs-12 col-sm-4 fadein-effect" ng-repeat="element in data | toArray | orderBy:'-date' ">
         <div class="inner-container">
-          <h3 class="equipment">Equipment: <b>{{element.equipment}}</b></h3>
-          <h3 class="serial">Serial: <b>{{element.serial}}</b></h3>
-          <h4 class="username">By {{element.userName}}</h4>
+          <div class="product-infos">
+            <h3 class="equipment">Equipment: <b>{{element.equipment}}</b></h3>
+            <h3 class="serial">Serial: <b>{{element.serial}}</b></h3>
+          </div>
+          <h4 class="username">By <b>{{element.userName}}</b></h4>
           <h4 class="date">{{element.date | date : 'd MMM y, HH:mm'}}</h4>
           <p class="title">Location</p>
           <p class="content location">{{element.location}}</p>

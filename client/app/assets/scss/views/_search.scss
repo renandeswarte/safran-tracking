@@ -2,11 +2,40 @@
   .no-equipment {
     margin-top: 10px;
   }
-form {
-  &.ng-submitted {
-    .ng-invalid {
-      border: 2px solid red;
+  form {
+    &.ng-submitted {
+      .ng-invalid {
+        border: 2px solid red;
+      }
+    }
+    button[type="submit"] {
+      margin-left: auto;
+      margin-right: auto;
+      display: inline-block;
+      width: auto;
     }
   }
-}
+  .serial-list {
+    margin-top: 20px;
+    padding-top: 0px;
+    border-top: 1px solid $lightGreyColor;
+    .filter-form {
+      margin-bottom: 20px;
+    }
+    ul {
+      .serial {
+        margin-bottom: 15px;
+        a {
+          color: $whiteColor;
+                  padding: 5px 10px 3px;
+        background-color: $secondaryColor;
+        border-radius: 5px;
+        margin-right: 5px;
+          &:hover {
+            color: $whiteColor;
+          }
+        }
+      }
+    }
+  }
 }
