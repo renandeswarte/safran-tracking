@@ -8,7 +8,7 @@ angular.module('myApp.form', ['ngRoute'])
   });
 }])
 
-.controller('formCtrl', ['$scope', '$route', '$routeParams', 'Auth', function($scope, $route, $routeParams, Auth) {
+.controller('formCtrl', ['$scope', '$route', '$routeParams', 'Auth', 'DataServices', function($scope, $route, $routeParams, Auth, DataServices) {
   // http://localhost:3000/#/form?equipment=test&serial=12345
 
   var userData = Auth.getUserName();
@@ -23,7 +23,7 @@ angular.module('myApp.form', ['ngRoute'])
   // nature de l’activité (genre liste déroulante : Essai / transport / installation / inspection)
   // demande les faits marquants: cela serait un texte libre que l’opérateur pourrait remplir à sa guise (genre: RAS, présence d’une rayure…)
 
-  $scope.formSubmit = function() {
+  $scope.formSubmit = function(form) {
     formData = {
       userName: userData.userName,
       equipment: $routeParams.equipment,
@@ -32,7 +32,11 @@ angular.module('myApp.form', ['ngRoute'])
       activity: $scope.activity,
       details: $scope.details
     }
-    console.log(formData)
+    if(form.$valid) {
+      console.log(formData); 
+      DataServices.saveData(formData);
+    }
+
   }
 
 }]);

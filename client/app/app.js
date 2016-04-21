@@ -7,6 +7,7 @@ angular.module('myApp', [
   'myApp.loginSignup',
   'myApp.auth',
   'myApp.services',
+  'myApp.data',
   // Views
   'myApp.header',
   'myApp.headerDirective',
