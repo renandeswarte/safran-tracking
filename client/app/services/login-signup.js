@@ -31,7 +31,7 @@ angular.module('myApp.loginSignup', ['firebase'])
       email: userDataLogin.email,
       password: userDataLogin.password
     }).then(function(authData) {
-      console.log("Logged in as:", authData);
+      //console.log("Logged in as:", authData);
       $timeout(function() {resolve(null, 'ok', deferred);}, 0);
 
       var ref = new Firebase(FirebaseUrl + '/users/' + authData.uid);
@@ -59,7 +59,7 @@ angular.module('myApp.loginSignup', ['firebase'])
       });
 
     }).catch(function(error) {
-      console.error("Authentication failed:", error);
+      //console.error("Authentication failed:", error);
       $timeout(function() {resolve(error, null, deferred);}, 0);
     });
 

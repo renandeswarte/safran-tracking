@@ -215,7 +215,7 @@ angular.module('myApp.loginSignup', ['firebase'])
       email: userDataLogin.email,
       password: userDataLogin.password
     }).then(function(authData) {
-      console.log("Logged in as:", authData);
+      //console.log("Logged in as:", authData);
       $timeout(function() {resolve(null, 'ok', deferred);}, 0);
 
       var ref = new Firebase(FirebaseUrl + '/users/' + authData.uid);
@@ -243,7 +243,7 @@ angular.module('myApp.loginSignup', ['firebase'])
       });
 
     }).catch(function(error) {
-      console.error("Authentication failed:", error);
+      //console.error("Authentication failed:", error);
       $timeout(function() {resolve(error, null, deferred);}, 0);
     });
 
@@ -479,8 +479,10 @@ angular.module('myApp.login', ['ngRoute'])
   }
 
   $scope.createUser = function() {
+    $('.signup-submit').prop("disabled",true);
     AuthServices.checkSecret($scope.secret).then(function(data){
       if (data.error) {
+        $('.signup-submit').prop("disabled",false);
         console.log('wrong secret error');
         $scope.secretError = true;
       } else {
@@ -491,8 +493,10 @@ angular.module('myApp.login', ['ngRoute'])
           password: $scope.password
         };
         AuthServices.signup(userInfos).then(function(data) {
+          $('.signup-submit').prop("disabled",false);
           $scope.signupError = false;
         }, function(error) {
+          $('.signup-submit').prop("disabled",false);
           $scope.signupError = error.message;
         });
       }
