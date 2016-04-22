@@ -74,7 +74,10 @@ angular.module('myApp.tracking', ['ngRoute'])
         $scope.formDataError = "Something went wrong. Please try again";
       });
     }
+  };
 
+  $scope.changeStyle = function() {
+    $('.tracking-page .data-container').toggleClass("tab-style");
   }
 
 }]);

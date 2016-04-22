@@ -351,6 +351,18 @@ angular.module('myApp.services', [])
 	};
 
 }]);
+angular.module('myApp.footerDirective', [])
+
+.directive('footerDirective', function() {
+  return {
+    templateUrl: 'view/footer/footer.html'
+  };
+});
+angular.module('myApp.footer', [])
+
+.controller('footerController', ['$scope', function($scope) {
+}]);
+
 angular.module('myApp.auth', [])
 
 .controller('AuthController', ['$scope', '$http', 'Auth', '$cookies', function($scope, $http, Auth, $cookies) {
@@ -369,6 +381,35 @@ angular.module('myApp.auth', [])
   }
 
 }]);
+angular.module('myApp.homepage', [])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/', {
+    authenticate: true,
+    templateUrl: 'view/home/home.html',
+    controller: 'homepage'
+  });
+}])
+
+.controller('homepage', ['$scope', 'DataServices', function($scope, DataServices) {
+
+  // Set default min height regarding screen height
+  $('.page').css('min-height', window.innerHeight - 40 + 'px'); 
+
+  $('.home-page .loader-container .loader i').addClass('fa-spin');
+
+  DataServices.getLastestData().then(function(data) {
+    $('.home-page .loader-container .loader i').removeClass('fa-spin');
+    $('.home-page .loader-container').hide();
+    $scope.data = data;
+    $scope.contentLoading = true;
+  }, function(error) {
+    $('.home-page .loader-container .loader i').removeClass('fa-spin');
+    $('.home-page .loader-container').hide();
+  });
+
+}]);
+
 angular.module('myApp.headerDirective', [])
 
 .directive('headerDirective', function() {
@@ -406,47 +447,6 @@ angular.module('myApp.header', [])
 $scope.logout = function() {
   AuthServices.logout();
 }
-
-}]);
-
-angular.module('myApp.footerDirective', [])
-
-.directive('footerDirective', function() {
-  return {
-    templateUrl: 'view/footer/footer.html'
-  };
-});
-angular.module('myApp.footer', [])
-
-.controller('footerController', ['$scope', function($scope) {
-}]);
-
-angular.module('myApp.homepage', [])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {
-    authenticate: true,
-    templateUrl: 'view/home/home.html',
-    controller: 'homepage'
-  });
-}])
-
-.controller('homepage', ['$scope', 'DataServices', function($scope, DataServices) {
-
-  // Set default min height regarding screen height
-  $('.page').css('min-height', window.innerHeight - 40 + 'px'); 
-
-  $('.home-page .loader-container .loader i').addClass('fa-spin');
-
-  DataServices.getLastestData().then(function(data) {
-    $('.home-page .loader-container .loader i').removeClass('fa-spin');
-    $('.home-page .loader-container').hide();
-    $scope.data = data;
-    $scope.contentLoading = true;
-  }, function(error) {
-    $('.home-page .loader-container .loader i').removeClass('fa-spin');
-    $('.home-page .loader-container').hide();
-  });
 
 }]);
 
@@ -501,49 +501,6 @@ angular.module('myApp.login', ['ngRoute'])
       }
     });
 
-  }
-
-}]);
-angular.module('myApp.search', [])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/search', {
-  	authenticate: true,
-    templateUrl: 'view/search/search.html',
-    controller: 'searchCtrl'
-  });
-}])
-
-.controller('searchCtrl', ['$scope', '$route', '$routeParams', 'Auth', 'DataServices', '$window', '$location', function($scope, $route, $routeParams, Auth, DataServices, $window, $location) {
-
-  // Set default min height regarding screen height
-  $('.page').css('min-height', window.innerHeight - 40 + 'px');
-
-  $scope.searchEquipement = function(form) {
-    if(form.$valid) {
-      DataServices.searchFunction($scope.equipment).then(function(data) {
-        console.log(data);
-        if (!data) {
-          $scope.noEquipment = true;
-        } else {
-          $scope.hasEquipment = true;
-          $scope.noEquipment = false;
-          var dataArray = ObjToArray(data);
-          console.log(dataArray);
-          $scope.serials = dataArray;
-        }
-
-      }, function(error) {
-        console.log(error);
-      })
-    }
-  }
-
-  var ObjToArray = function(obj) {
-    var array = $.map(obj, function(value, index) {
-        return [value];
-    });
-    return array;
   }
 
 }]);
@@ -623,7 +580,53 @@ angular.module('myApp.tracking', ['ngRoute'])
         $scope.formDataError = "Something went wrong. Please try again";
       });
     }
+  };
 
+  $scope.changeStyle = function() {
+    $('.tracking-page .data-container').toggleClass("tab-style");
+  }
+
+}]);
+angular.module('myApp.search', [])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/search', {
+  	authenticate: true,
+    templateUrl: 'view/search/search.html',
+    controller: 'searchCtrl'
+  });
+}])
+
+.controller('searchCtrl', ['$scope', '$route', '$routeParams', 'Auth', 'DataServices', '$window', '$location', function($scope, $route, $routeParams, Auth, DataServices, $window, $location) {
+
+  // Set default min height regarding screen height
+  $('.page').css('min-height', window.innerHeight - 40 + 'px');
+
+  $scope.searchEquipement = function(form) {
+    if(form.$valid) {
+      DataServices.searchFunction($scope.equipment).then(function(data) {
+        console.log(data);
+        if (!data) {
+          $scope.noEquipment = true;
+        } else {
+          $scope.hasEquipment = true;
+          $scope.noEquipment = false;
+          var dataArray = ObjToArray(data);
+          console.log(dataArray);
+          $scope.serials = dataArray;
+        }
+
+      }, function(error) {
+        console.log(error);
+      })
+    }
+  }
+
+  var ObjToArray = function(obj) {
+    var array = $.map(obj, function(value, index) {
+        return [value];
+    });
+    return array;
   }
 
 }]);
