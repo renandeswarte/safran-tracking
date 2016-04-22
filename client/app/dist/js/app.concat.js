@@ -48,7 +48,6 @@ angular.module('myApp.env', [])
 
 angular.module('myApp.data', ['firebase'])
 
-
 .factory('DataServices', [ '$timeout', '$window', '$http', '$q', '$rootScope', '$cookies', 'ServerAPI', 'FirebaseUrl', function($timeout, $window, $http, $q, $rootScope, $cookies, ServerAPI, FirebaseUrl) {
 
   resolve = function(errval, retval, deferred) {
@@ -370,18 +369,6 @@ angular.module('myApp.auth', [])
   }
 
 }]);
-angular.module('myApp.footerDirective', [])
-
-.directive('footerDirective', function() {
-  return {
-    templateUrl: 'view/footer/footer.html'
-  };
-});
-angular.module('myApp.footer', [])
-
-.controller('footerController', ['$scope', function($scope) {
-}]);
-
 angular.module('myApp.headerDirective', [])
 
 .directive('headerDirective', function() {
@@ -420,6 +407,18 @@ $scope.logout = function() {
   AuthServices.logout();
 }
 
+}]);
+
+angular.module('myApp.footerDirective', [])
+
+.directive('footerDirective', function() {
+  return {
+    templateUrl: 'view/footer/footer.html'
+  };
+});
+angular.module('myApp.footer', [])
+
+.controller('footerController', ['$scope', function($scope) {
 }]);
 
 angular.module('myApp.homepage', [])

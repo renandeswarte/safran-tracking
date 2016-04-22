@@ -1,6 +1,5 @@
 angular.module('myApp.data', ['firebase'])
 
-
 .factory('DataServices', [ '$timeout', '$window', '$http', '$q', '$rootScope', '$cookies', 'ServerAPI', 'FirebaseUrl', function($timeout, $window, $http, $q, $rootScope, $cookies, ServerAPI, FirebaseUrl) {
 
   resolve = function(errval, retval, deferred) {
